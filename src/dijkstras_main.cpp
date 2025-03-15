@@ -17,13 +17,8 @@ int main() {
     vector<int> dist = dijkstra_shortest_path(G, 0, previous);
 
     for (int v = 0; v < G.numVertices; v++) {
-        cout << "Shortest path from 0 to " << v << ": ";
         vector<int> path = extract_shortest_path(dist, previous, v);
-        if (path.empty()) {
-            cout << "No path" << endl;
-        } else {
-            print_path(path, dist[v]);
-        }
+        print_path(path, (dist[v] == INF ? 0 : dist[v]));
     }
     return 0;
 }
