@@ -1,5 +1,5 @@
 #include "dijkstras.h"
-#include <algorithm> // for reverse
+#include <algorithm>
 
 using namespace std;
 
@@ -36,7 +36,7 @@ vector<int> dijkstra_shortest_path(const Graph& G, int source, vector<int>& prev
         for (auto &edge : G[u]) {
             int v = edge.dst;
             int w = edge.weight;
-            if (!visited[v] && distance[u] != INF && (distance[u] + w < distance[v])) {
+            if (!visited[v] && distance[u] != INF && distance[u] + w < distance[v]) {
                 distance[v] = distance[u] + w;
                 previous[v] = u;
                 pq.push(Node(v, distance[v]));
@@ -64,12 +64,9 @@ vector<int> extract_shortest_path(const vector<int>& distances,
 }
 
 void print_path(const vector<int>& v, int total) {
-    // The autograder expects "vertex1 vertex2 vertex3 ...\nTotal cost is X\n"
-    // If the path is empty, the autograder wants a blank line plus "Total cost is X\n"
     if (!v.empty()) {
         for (size_t i = 0; i < v.size(); i++) {
-            cout << v[i];
-            if (i < v.size() - 1) cout << " ";
+            cout << v[i] << " ";
         }
         cout << "\nTotal cost is " << total << "\n";
     } else {

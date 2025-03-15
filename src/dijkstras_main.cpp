@@ -18,7 +18,8 @@ int main() {
 
     for (int v = 0; v < G.numVertices; v++) {
         vector<int> path = extract_shortest_path(dist, previous, v);
-        print_path(path, (dist[v] == INF ? 0 : dist[v]));
+        int cost = (dist[v] == INF ? 0 : dist[v]);
+        print_path(path, cost);
     }
     return 0;
 }
